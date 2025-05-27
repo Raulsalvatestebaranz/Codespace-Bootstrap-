@@ -1,0 +1,174 @@
+/* ================================
+   BASE STYLES
+================================= */
+html {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* ================================
+   LAYOUT CONTAINER
+================================= */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ================================
+   SIDEBAR
+================================= */
+.sidebar {
+  width: 320px;
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1a73e8;
+}
+.sidebar p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+.control-group {
+  margin-bottom: 2rem;
+}
+.control-group h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: #1a73e8;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+select,
+input[type="number"] {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  transition: border 0.2s ease;
+}
+select:focus,
+input[type="number"]:focus {
+  border-color: #1a73e8;
+  outline: none;
+}
+button#resetBtn {
+  padding: 0.5rem 1rem;
+  background: #1a73e8;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  transition: background 0.2s ease;
+}
+button#resetBtn:hover {
+  background: #155ab6;
+}
+
+/* ================================
+   MAIN PREVIEW AREA
+================================= */
+.main {
+  flex: 1;
+  padding: 2rem;
+  overflow-x: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* ================================
+   FLEX/GRID CONTAINER BOX
+================================= */
+#box {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  border: 2px dashed #666;
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  min-height: clamp(200px, 30vh, 400px);
+  justify-content: center;
+}
+
+/* ================================
+   FLEX/GRID ITEMS
+================================= */
+#box .item {
+  flex: 0 1 min(120px, 22%);
+  min-height: 60px;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+#box .item:nth-child(1) { background: #2ecc40; }
+#box .item:nth-child(2) { background: #ff851b; }
+#box .item:nth-child(3) { background: #ff4136; }
+#box .item:nth-child(4) { background: #0074d9; }
+#box .item:nth-child(5) { background: #b10dc9; }
+#box .item:nth-child(6) { background: #39cccc; }
+#box .item:hover {
+  transform: scale(1.05);
+}
+
+/* ================================
+   RESPONSIVE FIXES
+================================= */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .main {
+    padding: 1.5rem;
+  }
+
+  #box .item {
+    flex: 0 1 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  #box .item {
+    flex: 0 1 100%;
+    font-size: 0.9rem;
+  }
+}
