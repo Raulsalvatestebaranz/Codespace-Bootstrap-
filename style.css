@@ -1,6 +1,6 @@
 /* ================================
    BASE STYLES
-================================= */
+================================ */
 html {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   box-sizing: border-box;
@@ -13,33 +13,34 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f8f9fa;
   color: #333;
+  line-height: 1.5;
 }
 
 /* ================================
    LAYOUT CONTAINER
-================================= */
+================================ */
 .layout {
   display: flex;
   min-height: 100vh;
   overflow-x: hidden;
+  background-color: #fff;
 }
 
 /* ================================
    SIDEBAR
-================================= */
-.sidebar {
+================================ */
+.layout__sidebar {
   width: 320px;
-  background-color: #fff;
   padding: 2rem 1.5rem;
   border-right: 1px solid #ddd;
-  overflow-y: auto;
+  background-color: #ffffff;
 }
-.sidebar h2 {
+.layout__sidebar h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: #1a73e8;
 }
-.sidebar p {
+.layout__sidebar p {
   font-size: 0.95rem;
   color: #555;
   margin-bottom: 1.5rem;
@@ -47,12 +48,12 @@ body {
 .control-group {
   margin-bottom: 2rem;
 }
-.control-group h4 {
+.control-group__title {
   font-size: 1.1rem;
   margin-bottom: 0.75rem;
   color: #1a73e8;
 }
-label {
+label.form-label {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -73,7 +74,7 @@ input[type="number"]:focus {
   border-color: #1a73e8;
   outline: none;
 }
-button#resetBtn {
+#resetBtn {
   padding: 0.5rem 1rem;
   background: #1a73e8;
   color: #fff;
@@ -85,44 +86,47 @@ button#resetBtn {
   margin-top: 0.75rem;
   transition: background 0.2s ease;
 }
-button#resetBtn:hover {
+#resetBtn:hover {
   background: #155ab6;
 }
 
 /* ================================
    MAIN PREVIEW AREA
-================================= */
-.main {
+================================ */
+.layout__main {
   flex: 1;
   padding: 2rem;
-  overflow-x: auto;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  overflow-x: auto;
 }
 
 /* ================================
-   FLEX/GRID CONTAINER BOX
-================================= */
-#box {
-  width: 100%;
-  max-width: 100%;
-  padding: 1rem;
-  border: 2px dashed #666;
-  background: #fff;
+   FLEX CONTAINER BOX
+================================ */
+.playground-box {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  transition: all 0.3s ease;
+  padding: 1rem;
+  border: 2px dashed #666;
+  background: #fff;
   box-sizing: border-box;
-  min-height: clamp(200px, 30vh, 400px);
+  transition: all 0.3s ease;
   justify-content: center;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow-x: auto;
 }
 
 /* ================================
-   FLEX/GRID ITEMS
-================================= */
-#box .item {
+   FLEX ITEMS
+================================ */
+.playground-box__item {
   flex: 0 1 min(120px, 22%);
   min-height: 60px;
   padding: 1rem;
@@ -130,44 +134,46 @@ button#resetBtn:hover {
   font-weight: bold;
   font-size: 1rem;
   border-radius: 0.75rem;
-  color: #fff;
   transition: transform 0.2s ease;
+  color: #000;
+  background-color: transparent;
+  border: 2px dashed #999;
+  max-width: 100%;
+  flex-shrink: 1;
+  word-wrap: break-word;
 }
-#box .item:nth-child(1) { background: #2ecc40; }
-#box .item:nth-child(2) { background: #ff851b; }
-#box .item:nth-child(3) { background: #ff4136; }
-#box .item:nth-child(4) { background: #0074d9; }
-#box .item:nth-child(5) { background: #b10dc9; }
-#box .item:nth-child(6) { background: #39cccc; }
-#box .item:hover {
+.playground-box__item:nth-child(1) { border-color: #e74c3c; }
+.playground-box__item:nth-child(2) { border-color: #3498db; }
+.playground-box__item:nth-child(3) { border-color: #f39c12; }
+.playground-box__item:nth-child(4) { border-color: #2ecc71; }
+.playground-box__item:nth-child(5) { border-color: #9b59b6; }
+.playground-box__item:nth-child(6) { border-color: #1abc9c; }
+.playground-box__item:hover {
   transform: scale(1.05);
 }
 
 /* ================================
    RESPONSIVE FIXES
-================================= */
+================================ */
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
   }
-
-  .sidebar {
+  .layout__sidebar {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #ddd;
   }
-
-  .main {
+  .layout__main {
     padding: 1.5rem;
   }
-
-  #box .item {
+  .playground-box__item {
     flex: 0 1 48%;
   }
 }
 
 @media (max-width: 480px) {
-  #box .item {
+  .playground-box__item {
     flex: 0 1 100%;
     font-size: 0.9rem;
   }
